@@ -19,11 +19,7 @@ RUN wget -O /usr/local/bin/ipynb_stripout "https://raw.githubusercontent.com/jon
 
 
 # install notebook extensions
-RUN cd /tmp && \
-    git clone https://github.com/ipython-contrib/IPython-notebook-extensions.git && \
-    cd IPython-notebook-extensions && \
-    mkdir --parents /root/.local/share/jupyter && \
-    python setup.py install
+RUN pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
 ADD config/jupyter/extensions/notebook.json /root/.jupyter/nbconfig/
 ADD config/jupyter/extensions/github-commit-push.js /root/.ipython/nbextensions/
 ADD config/jupyter/extensions/github_commit_push.py /root/.local/share/jupyter/extensions/
@@ -35,11 +31,12 @@ ADD config/ssh /root/.ssh
 
 # customize Jupyter's logo
 ADD config/jupyter/logo.png /usr/local/lib/python2.7/dist-packages/notebook/static/base/images/logo.png
+ADD config/jupyter/logo.png /usr/local/lib/python2.7/site-packages/notebook/static/base/images/logo.png
+
 
 # install and enable github-commit-push extension
-WORKDIR /data
 ENV PYTHONPATH /root/.local/share/jupyter/extensions/
-RUN jupyter nbextension install /root/.ipython/nbextensions/github-commit-push.js
+RUN jupyter contrib nbextension install
 RUN jupyter nbextension enable github-commit-push
 
 

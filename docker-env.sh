@@ -3,7 +3,7 @@
 ##      (i.e. VAR="VAL" and VAR=$VAL will not expand; use VAR=VAL only)
 
 ## Tip: GIT_PARENT_DIR == VOL_HOST == VOL_CNTR == (absolute dir)
-GIT_PARENT_DIR=FIXME_EXAMPLE_/data
+ABSOLUTE_BASE_DIR=FIXME_EXAMPLE_/data
 GIT_REPO_NAME=FIXME_EXAMPLE_lab41
 GIT_BRANCH_NAME=FIXME_EXAMPLE_ipynb
 GIT_USER=FIXME_EXAMPLE_chrissng
@@ -13,10 +13,6 @@ GITHUB_ACCESS_TOKEN=FIXME
 
 PORT_HOST=8888
 PORT_CNTR=8888
-VOL_HOST=/data
-VOL_CNTR=/data
-
-THEANO_FLAGS=mode=FAST_RUN,device=gpu1,floatX=float32
 
 
 ############################################################################

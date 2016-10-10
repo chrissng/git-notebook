@@ -32,11 +32,11 @@ wait_for_yes "Has $GIT_USER uploaded the public key from above (from config/ssh/
 
 
 # clone git repository
-mkdir --parents $GIT_PARENT_DIR
-pushd $GIT_PARENT_DIR
+mkdir --parents $ABSOLUTE_BASE_DIR
+pushd $ABSOLUTE_BASE_DIR
 git clone $GIT_REMOTE_URL_HTTPS
 
 
 # add output filter to repository
-cd $GIT_PARENT_DIR/$GIT_REPO_NAME
+cd $ABSOLUTE_BASE_DIR/$GIT_REPO_NAME
 echo "*.ipynb filter=ipynb_stripout" >> .gitattributes

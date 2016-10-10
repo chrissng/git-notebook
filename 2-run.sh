@@ -3,12 +3,12 @@
 source "docker-env.sh"
 
 # image name
-__image=lab41/keras-cuda-jupyter
+__image=datagovsg/git-notebook
 
 # run image
 docker run -d \
-           --volume=$VOL_HOST:$VOL_CNTR \
-           --workdir=$VOL_CNTR \
+           --volume=$ABSOLUTE_BASE_DIR:$ABSOLUTE_BASE_DIR \
+           --workdir=$ABSOLUTE_BASE_DIR \
            --publish=$PORT_HOST:$PORT_CNTR \
            --env-file=docker-env.sh \
             $__image

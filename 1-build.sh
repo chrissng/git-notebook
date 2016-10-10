@@ -1,4 +1,4 @@
 #!/bin/bash
 
-__image=lab41/keras-cuda-jupyter
+__image=datagovsg/git-notebook
 docker build -t $__image .
