@@ -21,7 +21,7 @@ class GitCommitHandler(RequestHandler):
 
         # git parameters from environment variables
         # expand variables since Docker's will pass VAR=$VAL as $VAL without expansion
-        git_dir = "{}/{}".format(os.path.expandvars(os.environ.get('GIT_PARENT_DIR')), os.path.expandvars(os.environ.get('GIT_REPO_NAME')))
+        git_dir = "{}/{}".format(os.path.expandvars(os.environ.get('ABSOLUTE_BASE_DIR')), os.path.expandvars(os.environ.get('GIT_REPO_NAME')))
         git_url = os.path.expandvars(os.environ.get('GIT_REMOTE_URL'))
         git_user = os.path.expandvars(os.environ.get('GIT_USER'))
         git_repo_upstream = os.path.expandvars(os.environ.get('GIT_REMOTE_UPSTREAM'))
