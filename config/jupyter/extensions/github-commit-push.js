@@ -68,11 +68,16 @@ define(['base/js/namespace','base/js/dialog','jquery'],function(IPython, dialog,
 
                 // save and checkpoint notebook
                 console.log('Saving and checkpointing notebook before commit-and-push...');
+                var commit_flag = true;
                 IPython.notebook.save_checkpoint();
 
                 $([IPython.events]).on('notebook_saved.Notebook', function() {
                   // commit and push
-                  $.ajax(settings);
+                  if (commit_flag) {
+                    $.ajax(settings).always(function() {
+                      commit_flag = false;
+                    });
+                  }
                 });
             }
 

@@ -54,11 +54,20 @@ class GitCommitHandler(RequestHandler):
         except GitCommandError:
             print("Switching to {}".format(repo.heads[git_branch].checkout()))
 
-        # commit current notebook
+        # add notebook to staging
         # client will sent pathname containing git directory; append to git directory's parent
         try:
             print(repo.git.add(git_dir_parent + filename))
-            print(repo.git.commit( a=True, m="{}\n\nUpdated {}".format(msg, filename) ))
+            if "nothing added to commit" in repo.git.status():
+                self.error_and_return(cwd, "No changes made to file: {}".format(git_dir_parent + filename))
+                return
+        except GitCommandError as e:
+            self.error_and_return(cwd, "Unable to add to staging: {}".format(git_dir_parent + filename))
+            return
+
+        # commit current notebook
+        try:
+            print(repo.git.commit(a=True, m="{}\nUpdated {}".format(msg, filename) ))
         except GitCommandError as e:
             self.error_and_return(cwd, "Could not commit changes to notebook: {}".format(git_dir_parent + filename))
             return
