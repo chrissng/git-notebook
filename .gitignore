@@ -1,2 +1,4 @@
 config/ssh/*
 ipynb/*
+
+.env
