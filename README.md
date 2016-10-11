@@ -1,6 +1,12 @@
-## Based from [Lab41/sunny-side-up](https://github.com/Lab41/sunny-side-up)
+# git-notebook
 
-1. Set `docker-env.sh`
-2. Run `./0-configure.sh` 
-3. Run `./1-build.sh`
-4. Run `./2-run.sh`
+Jupyter Notebook with Commit-and-Push to GitHub
+
+
+## Deploy
+
+1. Set environment variable in `.env` file
+2. `./configure.sh` for sanity checks
+3. `docker-compose -p gnb -f docker-compose.yml up --build -d`
+
+Based from [Lab41/sunny-side-up](https://github.com/Lab41/sunny-side-up)

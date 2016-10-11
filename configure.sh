@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # import variables
-source "docker-env.sh"
+source ".env"
 
 function wait_for_yes() {
   local __msg="$1"
