@@ -63,11 +63,17 @@ define(['base/js/namespace','base/js/dialog','jquery'],function(IPython, dialog,
                 };
 
                 // display preloader during commit and push
-                var preloader = '<img class="commit-feedback" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/ajax-loader.gif">';
+                var preloader = '<img class="commit-feedback" style="padding: 5px;" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/ajax-loader.gif">';
                 container.prepend(preloader);
 
-                // commit and push
-                $.ajax(settings);
+                // save and checkpoint notebook
+                console.log('Saving and checkpointing notebook before commit-and-push...');
+                IPython.notebook.save_checkpoint();
+
+                $([IPython.events]).on('notebook_saved.Notebook', function() {
+                  // commit and push
+                  $.ajax(settings);
+                });
             }
 
 
