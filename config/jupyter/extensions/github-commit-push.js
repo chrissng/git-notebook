@@ -67,7 +67,7 @@ define(['base/js/namespace','base/js/dialog','jquery'],function(IPython, dialog,
                 container.prepend(preloader);
 
                 // save and checkpoint notebook
-                console.log('Saving and checkpointing notebook before commit-and-push...');
+                console.info('Saving and checkpointing notebook before commit-and-push...');
                 var commit_flag = true;
                 IPython.notebook.save_checkpoint();
 
