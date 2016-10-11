@@ -3,7 +3,7 @@ MAINTAINER Fred Teo <fredteo@data.gov.sg>
 
 
 # install python modules
-RUN pip install jupyter psutil gitpython requests
+RUN pip install jupyter psutil gitpython requests ipywidgets
 
 
 # create ipython profile
@@ -38,6 +38,10 @@ ADD config/jupyter/logo.png /usr/local/lib/python2.7/site-packages/notebook/stat
 ENV PYTHONPATH /root/.local/share/jupyter/extensions/
 RUN jupyter contrib nbextension install
 RUN jupyter nbextension enable github-commit-push
+
+
+# enable jupyter interactive widgets
+RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
 
 # default to jupyter notebook
