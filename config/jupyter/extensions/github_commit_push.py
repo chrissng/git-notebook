@@ -48,13 +48,6 @@ class GitCommitHandler(RequestHandler):
             self.error_and_return(cwd, "Could not checkout repo: {}".format(dir_repo))
             return
 
-
-        print 'git_dir', git_dir
-        print 'git_dir_parent', git_dir_parent
-        print 'filename', filename
-        print 'cwd', cwd
-
-
         # create new branch
         try:
             print(repo.git.checkout('HEAD', b=git_branch))
